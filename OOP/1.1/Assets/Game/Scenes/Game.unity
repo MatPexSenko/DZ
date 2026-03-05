@@ -1208,8 +1208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 739865810}
-  - component: {fileID: 739865811}
-  - component: {fileID: 739865812}
   m_Layer: 0
   m_Name: '[GameContext]'
   m_TagString: Untagged
@@ -1234,37 +1232,9 @@ Transform:
   - {fileID: 1879759789}
   - {fileID: 562298204}
   - {fileID: 229096086002100841}
+  - {fileID: 1520334082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &739865811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739865809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44096005fc344162b379412354af0f6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.ExplosionManager
-  smallExplosionConfig: {fileID: 11400000, guid: 1eaf1af2fcce68c4b885adfb3676e2e4, type: 2}
-  bigExplosionConfig: {fileID: 11400000, guid: 4535da818c13ae9499f94e8dafc11683, type: 2}
-  _container: {fileID: 363245576}
---- !u!114 &739865812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739865809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529ae83eaa804d9282d67e317d053622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.ExplosionController
-  _bulletManager: {fileID: 363245577}
-  _explosionManager: {fileID: 739865811}
 --- !u!1 &770582453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1754,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1879759789}
     m_Modifications:
     - target: {fileID: 328849090417711829, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
       propertyPath: _fire
@@ -1836,15 +1806,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706750963508843440, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5706750963508843440, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5706750963508843440, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5706750963508843440, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2445,6 +2415,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a40dacbeba84ba1b55163e9b048081b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1520334081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1520334082}
+  - component: {fileID: 1520334084}
+  - component: {fileID: 1520334083}
+  m_Layer: 0
+  m_Name: <ExplosionManager>
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1520334082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520334081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 739865810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520334083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520334081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529ae83eaa804d9282d67e317d053622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.BulletExplosionController
+  _bulletManager: {fileID: 363245577}
+  _explosionManager: {fileID: 1520334084}
+--- !u!114 &1520334084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520334081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44096005fc344162b379412354af0f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.ExplosionManager
+  smallExplosionConfig: {fileID: 11400000, guid: 1eaf1af2fcce68c4b885adfb3676e2e4, type: 2}
+  bigExplosionConfig: {fileID: 11400000, guid: 4535da818c13ae9499f94e8dafc11683, type: 2}
+  _container: {fileID: 1520334082}
 --- !u!1 &1536551910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.DeathComponent
   _ship: {fileID: 1733919611}
-  _explosionManager: {fileID: 739865811}
+  _explosionManager: {fileID: 1520334084}
 --- !u!82 &1733919618 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8141832910989862937, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
@@ -2699,6 +2731,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1498479407}
+  - {fileID: 1733919612}
   m_Father: {fileID: 739865810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1879759790
@@ -3565,4 +3598,3 @@ SceneRoots:
   - {fileID: 2094226229}
   - {fileID: 739865810}
   - {fileID: 177601767}
-  - {fileID: 1015509673}
