@@ -13,15 +13,7 @@ namespace Game
         
         [SerializeField]
         private TransformBounds _playerArea;
-
-        [SerializeField]
-        private CameraShaker _cameraShaker;
-        // [Header("UI")]
-        // [SerializeField]
-        // private GameOverView _gameOverView;
-        //
-        // [SerializeField]
-        // private HealthView _healthView;
+        
         private void Start()
         {
             if (_shipConfig == null)

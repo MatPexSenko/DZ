@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public sealed class OnPlayerDeath : MonoBehaviour
+    public sealed class OnPlayerDeathController : MonoBehaviour
     {
         [SerializeField]private PlayerShip _playerShip;
         [SerializeField] private EnemyManager _enemyManager;
