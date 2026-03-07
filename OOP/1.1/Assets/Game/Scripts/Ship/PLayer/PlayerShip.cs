@@ -21,8 +21,8 @@ namespace Game
             
             Construct(_shipConfig.Health, _shipConfig.MoveSpeed, _shipConfig.FireCooldown);
             
-            moveComponent.AddCondition(() => currentHealth > 0);
-            fireComponent.AddCondition(() => currentHealth > 0);
+            moveComponent.AddCondition(() => healthComponent.IsAlive());
+            fireComponent.AddCondition(() => healthComponent.IsAlive());
         }
         protected void LateUpdate()
         {

@@ -28,8 +28,8 @@ namespace Game
 
         public void Awake()
         {
-            moveComponent.AddCondition(() => currentHealth > 0);
-            fireComponent.AddCondition(() => currentHealth > 0);
+            moveComponent.AddCondition(() => healthComponent.IsAlive());
+            fireComponent.AddCondition(() => healthComponent.IsAlive());
             fireComponent.AddCondition(() => _target.position != null);
         }
 
@@ -67,7 +67,7 @@ namespace Game
 
         public void RestoreHealth()
         {
-            currentHealth=maxHealth;
+            healthComponent.RestoreHealth();
         }
         public override void Fire()
         {

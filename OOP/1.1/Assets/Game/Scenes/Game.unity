@@ -1780,6 +1780,10 @@ PrefabInstance:
       propertyPath: _currentHealth
       value: 67
       objectReference: {fileID: 0}
+    - target: {fileID: 328849090417711829, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
+      propertyPath: healthComponent
+      value: 
+      objectReference: {fileID: 1733919623}
     - target: {fileID: 3351835626697130784, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
       propertyPath: _speed
       value: 2
@@ -2623,6 +2627,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4c3c53e55744ff9792aebcf0a01a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.MoveComponent
+--- !u!114 &1733919623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8966610709827627731, guid: 0446acb84a7c9424d841676cef3b1d04, type: 3}
+  m_PrefabInstance: {fileID: 1015509673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733919604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68569cb5ba884ed5b39245ad8407a6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.HealthComponent
 --- !u!1 &1736145931
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2423574833469294770}
   - component: {fileID: 5413773227791724489}
   - component: {fileID: 3385163377983564467}
+  - component: {fileID: 7134441657680760794}
   m_Layer: 11
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -117,8 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09a324f54d94d6e84681731f36566c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
+  healthComponent: {fileID: 7134441657680760794}
   moveComponent: {fileID: -3389293373715977355}
   fireComponent: {fileID: 2011926458210260535}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -249,7 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.FireComponent
   _bulletManager: {fileID: 0}
   firePoint: {fileID: 3195880656587174614}
-  target: {fileID: 0}
   _fireTime: 0
   _fireCooldown: 0
 --- !u!114 &2423574833469294770
@@ -299,6 +298,19 @@ MonoBehaviour:
   _fireVFX: {fileID: 1792961037914348205}
   _viewTransform: {fileID: 3470145497817149085}
   _ship: {fileID: 102605417607457000}
+--- !u!114 &7134441657680760794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68569cb5ba884ed5b39245ad8407a6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.HealthComponent
+  <MaxHealth>k__BackingField: 0
 --- !u!1 &1074127585690423075
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ namespace Game
     // +
 
     [RequireComponent(typeof(MoveComponent),typeof(FireComponent),typeof(AudioComponent))]
+    [RequireComponent(typeof(HealthComponent))]
     public abstract class Ship : MonoBehaviour, IDamageable
     {
         public event Action OnHit;
@@ -14,12 +15,10 @@ namespace Game
         public event Action OnDead;
         public event Action<Ship> OnFire;
         public event Action<Vector3> OnMoved;
-
-        [Header("Health")]
-        [SerializeField]protected int currentHealth;
-        [SerializeField]protected int maxHealth;
-
+        
         [Header("Components")]
+        [SerializeField]
+        protected HealthComponent healthComponent;
         [SerializeField]
         protected MoveComponent moveComponent;
         [SerializeField]
@@ -28,8 +27,7 @@ namespace Game
         [SerializeField]protected Vector3 moveDirection;
         public void Construct(int health, float speed, float Cooldown )
         {
-            maxHealth = health;
-            currentHealth = maxHealth;
+            healthComponent.Construct(health);
             moveComponent.SetSpeed(speed);
             fireComponent.SetCooldown(Cooldown);
         }
@@ -47,10 +45,10 @@ namespace Game
         }
         public void TakeDamage(int damage)
         {
-            currentHealth-= damage;
-            OnHealthChanged?.Invoke(currentHealth, maxHealth);
+            healthComponent.Hit(damage);
+            OnHealthChanged?.Invoke(healthComponent.CurrentHealth, healthComponent.MaxHealth);
             OnHit?.Invoke();
-            if (currentHealth <= 0)
+            if (!healthComponent.IsAlive())
             {
                 OnDead?.Invoke();
             }
