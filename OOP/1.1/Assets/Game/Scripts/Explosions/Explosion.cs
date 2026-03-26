@@ -4,17 +4,14 @@ namespace Game
 {
     public sealed class Explosion : MonoBehaviour
     {
-        private Transform _transform;
         [SerializeField]private ParticleSystem _particleSystem;
 
-        public void Init()
+        public void Awake()
         {
             _particleSystem = GetComponent<ParticleSystem>();
-            _transform = GetComponent<Transform>();
         }
-        public void Initialize(Transform transform)
+        public void OnEnable()
         {
-            _transform.position = transform.position;
             _particleSystem.Play();
         }
     }

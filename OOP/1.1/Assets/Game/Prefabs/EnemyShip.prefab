@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 4560017961611896118}
   - component: {fileID: -3389293373715977355}
   - component: {fileID: 2011926458210260535}
-  - component: {fileID: 2423574833469294770}
-  - component: {fileID: 5413773227791724489}
-  - component: {fileID: 3385163377983564467}
   - component: {fileID: 7134441657680760794}
+  - component: {fileID: 952105061671529125}
+  - component: {fileID: 7871159813585025795}
   m_Layer: 11
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -121,7 +120,6 @@ MonoBehaviour:
   healthComponent: {fileID: 7134441657680760794}
   moveComponent: {fileID: -3389293373715977355}
   fireComponent: {fileID: 2011926458210260535}
-  moveDirection: {x: 0, y: 0, z: 0}
   _target: {fileID: 0}
   _stoppingDistance: 0.25
 --- !u!82 &4560017961611896118
@@ -248,56 +246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.FireComponent
   _bulletManager: {fileID: 0}
+  _bulletConfig: {fileID: 11400000, guid: 0dc7e0acdc1c54e42bc0b953ea853f6a, type: 2}
   firePoint: {fileID: 3195880656587174614}
   _fireTime: 0
   _fireCooldown: 0
---- !u!114 &2423574833469294770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05cb7209cbfc4b99ba716797f2c68120, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.AudioComponent
-  _ship: {fileID: 102605417607457000}
-  _fireSFX: {fileID: 8300000, guid: a6ed263e807940048af5295b8f7144d3, type: 3}
-  _damageSFX: {fileID: 8300000, guid: 57d168e98a87c594596ea5c39d7c3c7f, type: 3}
-  _audioSource: {fileID: 4560017961611896118}
---- !u!114 &5413773227791724489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c1e5f3d6a384369b5ccb8f72122ffc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.DeathComponent
-  _ship: {fileID: 102605417607457000}
-  _explosionManager: {fileID: 0}
---- !u!114 &3385163377983564467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5d03425ed44ef78df0a419f8701f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.ShipView
-  _viewConfig: {fileID: 11400000, guid: f6ecf0b3d1d004b3893cc42c64995303, type: 2}
-  _renderer: {fileID: 1333951631294404335}
-  _fireVFX: {fileID: 1792961037914348205}
-  _viewTransform: {fileID: 3470145497817149085}
-  _ship: {fileID: 102605417607457000}
+  _teamComponent: {fileID: 952105061671529125}
 --- !u!114 &7134441657680760794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +264,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::Game.HealthComponent
   <MaxHealth>k__BackingField: 0
+--- !u!114 &952105061671529125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7faa1df5c3a04eac8e8465a6752e887c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.TeamComponent
+  _team: 2
+--- !u!114 &7871159813585025795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559606060570185700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5e611c02ce4cfea697c3dca1d04f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.EnemyView
+  _gameObjectPull: {fileID: 0}
+  _VFXExplosion: {fileID: 1101452535904402, guid: 91acdbd2820f9ce418996a0a24d91079, type: 3}
+  _viewConfig: {fileID: 11400000, guid: f6ecf0b3d1d004b3893cc42c64995303, type: 2}
+  _renderer: {fileID: 1333951631294404335}
+  _fireVFX: {fileID: 1792961037914348205}
+  _viewTransform: {fileID: 200420269188509056}
+  _ship: {fileID: 102605417607457000}
+  _fireSFX: {fileID: 0}
+  _damageSFX: {fileID: 8300000, guid: 58dc2e645b97255419084420522f4ec0, type: 3}
+  _audioSource: {fileID: 4560017961611896118}
 --- !u!1 &1074127585690423075
 GameObject:
   m_ObjectHideFlags: 0

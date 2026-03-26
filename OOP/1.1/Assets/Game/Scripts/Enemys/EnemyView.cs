@@ -1,9 +1,9 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
+using DG.Tweening;
 
 namespace Game
 {
-    public class ShipView : MonoBehaviour
+    public class EnemyView : MonoBehaviour
     {
         [SerializeField]
         private GameObjectPull _gameObjectPull;
@@ -27,7 +27,7 @@ namespace Game
         private Transform _viewTransform;
 
         [SerializeField] 
-        private Player player;
+        private Enemy _ship;
         
         [SerializeField]
         private AudioClip _fireSFX;
@@ -42,25 +42,25 @@ namespace Game
         {
             _material = new Material(_viewConfig.MaterialPrefab);
             _renderer.material = _material;
+            
+            _gameObjectPull = GameObjectPull.Instance;
         }
 
         private void OnEnable()
         {
-            player.HealthComponent.OnHealthChanged += AnimateDamage;
-            player.MoveComponent.OnMoved += AnimateMovement;
-            player.FireComponent.OnFire += () => _fireVFX.Play();
-            player.FireComponent.OnFire+= () => PlaySound(_fireSFX);
-            player.HealthComponent.OnHealthChanged+= (_, _) => PlaySound(_damageSFX);
-            player.HealthComponent.OnDead += DeadExplosion;
+            _ship.HealthComponent.OnHealthChanged += AnimateDamage;
+            _ship.FireComponent.OnFire += () => _fireVFX.Play();
+            _ship.FireComponent.OnFire+= () => PlaySound(_fireSFX);
+            _ship.HealthComponent.OnHealthChanged+= (_, _) => PlaySound(_damageSFX);
+            _ship.HealthComponent.OnDead += DeadExplosion;
         }
         private void OnDisable()
         {
-            player.HealthComponent.OnHealthChanged -= AnimateDamage;
-            player.MoveComponent.OnMoved -= AnimateMovement;
-            player.FireComponent.OnFire -= () => _fireVFX.Play();
-            player.FireComponent.OnFire-= () => PlaySound(_fireSFX);
-            player.HealthComponent.OnHealthChanged-= (_, _) => PlaySound(_damageSFX);
-            player.HealthComponent.OnDead -= DeadExplosion;
+            _ship.HealthComponent.OnHealthChanged -= AnimateDamage;
+            _ship.FireComponent.OnFire -= () => _fireVFX.Play();
+            _ship.FireComponent.OnFire-= () => PlaySound(_fireSFX);
+            _ship.HealthComponent.OnHealthChanged-= (_, _) => PlaySound(_damageSFX);
+            _ship.HealthComponent.OnDead -= DeadExplosion;
         }
         private void AnimateDamage(int _, int __)
         {
@@ -76,22 +76,11 @@ namespace Game
             ).SetLink(_renderer.gameObject);
                
         }
-        private void AnimateMovement(Vector2 direction)
-        {
-            Vector3 shipAngles = _viewTransform.localEulerAngles;
-            shipAngles.x = _viewConfig.MoveRotationAngle * direction.y;
-            shipAngles.y = _viewConfig.MoveRotationAngle / 2 * direction.x * -1f;
-            
-            Quaternion shipRotation = Quaternion.Euler(shipAngles);
-            float t = _viewConfig.MoveSpeed * Time.deltaTime;
-            _viewTransform.localRotation = Quaternion.Lerp(_viewTransform.localRotation, shipRotation, t);
-        }
         private void DeadExplosion()
         {
             var x = _gameObjectPull.Rent(_VFXExplosion);
             x.transform.position = this.transform.position;
             
-            Destroy(this.gameObject);
         }
         private void PlaySound(AudioClip clip)
         {

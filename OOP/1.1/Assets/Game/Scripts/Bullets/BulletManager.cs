@@ -6,48 +6,23 @@ using UnityEngine;
 namespace Game
 {
     // +
-    
     public sealed class BulletManager : MonoBehaviour
     {
         public event Action<Transform> OnBulletHit;
-        [SerializeField]
-        private Transform _container;
-        
-        [SerializeField]
-        private PlayerBulletConfig playerConfig;
-        
-        [SerializeField]
-        private EnemyBulletConfig enemyConfig;
-
-        private Dictionary<TeamType, ObjectPool<Bullet>> _pools;
-        
-        private ObjectPool<Bullet> _playerBulletPool, _enemyBulletPool;
 
         [SerializeField]
-        private TransformBounds _levelBounds;
-        private void Awake()
+        private ObjectPool<Bullet> _bulletPool;
+        
+        public void Spawn(Vector2 position,int damage,float speed,TeamType team)
         {
-            FillDictionary();
-        }
-
-        private void FillDictionary()
-        {
-            _pools = new Dictionary<TeamType, ObjectPool<Bullet>>
-            {
-                { TeamType.Player, _playerBulletPool = new ObjectPool<Bullet>(playerConfig, _container) },
-                { TeamType.Enemy, _enemyBulletPool = new ObjectPool<Bullet>(enemyConfig, _container) }
-            };
-        }
-        public void Spawn(Vector2 position, TeamType team)
-        {
-            var bullet = _pools[team].GetFromPool();
-            bullet.Fire(position);
+            var bullet = _bulletPool.GetFromPool();
+            bullet.Construct(damage, speed, position, new Vector2(0,1), team);
             SubscribeBullet(bullet);
         }
-        public void Spawn(Vector2 position, Vector2 direction , TeamType team)
+        public void Spawn(Vector2 position,int damage,float speed, Vector2 direction , TeamType team)
         {
-            var bullet = _pools[team].GetFromPool();
-            bullet.Fire(position, direction);
+            var bullet = _bulletPool.GetFromPool();
+            bullet.Construct(damage, speed, position, direction, team);
             SubscribeBullet(bullet);
         }
 
@@ -64,14 +39,14 @@ namespace Game
          private void OnBulletTriggerEntered(Bullet bullet, Transform transform)
          {
              UnSubscribeBullet(bullet);
-            _pools[bullet.Team].ReturnToPool(bullet);
+            _bulletPool.ReturnToPool(bullet);
             OnBulletHit?.Invoke(transform);
         }
 
          private void OnBoundsExited(Bullet bullet)
          {
              UnSubscribeBullet(bullet);
-             _pools[bullet.Team].ReturnToPool(bullet);
+             _bulletPool.ReturnToPool(bullet);
          }
     }
 }

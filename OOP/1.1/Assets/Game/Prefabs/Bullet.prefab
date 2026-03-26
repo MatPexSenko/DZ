@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f04ddcf68e44c1b95a5d6ea04d1a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _view: {fileID: -4213174561079003827}
   _team: 0
   _direction: {x: 0, y: 0}
   _damage: 0
@@ -131,6 +130,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.BulletView
   _VFXPlayer: {fileID: 2619809868877078830}
   _VFXEnemy: {fileID: 1820983718236820478}
+  _VFXExplosion: {fileID: 1101452535904402, guid: 742ae5c3589574c4195065193e9181b5, type: 3}
+  _playerLayerMask: 14
+  _enemyLayerMask: 13
+  _bulletModel: {fileID: 201757604187811891}
+  _gameObjectPull: {fileID: 0}
 --- !u!1 &3276060438849189846
 GameObject:
   m_ObjectHideFlags: 0

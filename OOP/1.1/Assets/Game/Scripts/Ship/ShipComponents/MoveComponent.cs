@@ -8,9 +8,11 @@ namespace Game
 
     public sealed class MoveComponent : MonoBehaviour
     {
+        public event Action<Vector2> OnMoved, OnChangePosition;
+        
         [SerializeField]
         private Rigidbody2D _rigidbody;
-
+        
         [SerializeField]
         private float _speed;
 
@@ -18,15 +20,18 @@ namespace Game
 
         public void SetSpeed(float speed) => _speed = speed;
 
-        public void MoveStep(Vector2 direction) => _direction = direction;
+        public void Move(Vector2 direction)
+        {
+            _direction = direction;
+        }
         
         private readonly List<Func<bool>> _conditions = new();
         
         public void AddCondition(Func<bool> condition) => _conditions.Add(condition);
         
-        protected bool CanDo(List<Func<bool>> conditions)
+        protected bool CanMove()
         {
-            foreach (var Condition in conditions)
+            foreach (var Condition in _conditions)
             {
                 if (!Condition())
                 {
@@ -37,12 +42,14 @@ namespace Game
         }
         public void FixedUpdate()
         {
-            if (!_direction.HasValue || !CanDo(_conditions))
+            if (!_direction.HasValue || !CanMove())
                 return;
 
             Vector2 direction = _direction.Value;
             Vector2 newPosition = _rigidbody.position + direction * (_speed * Time.fixedDeltaTime);
             _rigidbody.MovePosition(newPosition);
+            OnChangePosition?.Invoke(newPosition);
+            OnMoved?.Invoke(direction);
             _direction = null;
         }
     }

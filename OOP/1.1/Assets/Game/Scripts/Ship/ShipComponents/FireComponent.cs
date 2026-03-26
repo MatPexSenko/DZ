@@ -4,46 +4,61 @@ using UnityEngine;
 
 namespace Game
 {
+    [RequireComponent(typeof(TeamComponent))]
     public sealed class FireComponent : MonoBehaviour
     {
         public event Action OnFire;
+        
         [Header("Combat")]
         [SerializeField]private BulletManager _bulletManager;
+        [SerializeField]private BulletConfig _bulletConfig;
+        
         [SerializeField]protected Transform firePoint;
         [SerializeField]protected float _fireTime;
         [SerializeField]protected float _fireCooldown;
+        
+        [SerializeField]private TeamComponent _teamComponent;
 
         private void Awake()
         {
             AddCondition(() => Time.time - _fireTime >= _fireCooldown);
             _bulletManager = FindFirstObjectByType<BulletManager>();
         }
+
+        public void SetBulletManager(BulletManager bulletManager)
+        {
+            _bulletManager = bulletManager;
+        }
         public void SetCooldown(float cooldown)
         {
             _fireCooldown = cooldown;
         }
-        public void Fire(TeamType team)
+        public void Fire()
         {
-            if (CanDo(_conditions))
+            if (CanFire())
             {
                 _bulletManager.Spawn(firePoint.position,
-                    team);
+                    _bulletConfig.Damage,
+                    _bulletConfig.Speed,
+                    _teamComponent.Team
+                    );
                 _fireTime = Time.time;
                 OnFire?.Invoke();
             }
         }
         
-        public void Fire(TeamType team, Vector2 direction)
+        public void Fire(Vector2 direction)
         {
             if(direction == Vector2.zero)
                 return;
             
-            if (CanDo(_conditions))
+            if (CanFire())
             {
-                
                 _bulletManager.Spawn(firePoint.position,
+                    _bulletConfig.Damage,
+                    _bulletConfig.Speed,
                     direction,
-                    team);
+                    _bulletConfig.Team);
                 _fireTime = Time.time;
                 OnFire?.Invoke();
             }
@@ -52,9 +67,9 @@ namespace Game
         
         public void AddCondition(Func<bool> condition) => _conditions.Add(condition);
         
-        protected bool CanDo(List<Func<bool>> conditions)
+        protected bool CanFire()
         {
-            foreach (var Condition in conditions)
+            foreach (var Condition in _conditions)
             {
                 if (!Condition())
                 {

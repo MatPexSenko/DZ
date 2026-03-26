@@ -3,7 +3,8 @@ using UnityEngine;
 namespace Game
 {
     // +
-    public abstract class ShipConfig : ScriptableObject
+    [CreateAssetMenu(fileName = "ShipConfig", menuName = "Game/ShipConfig")]
+    public class ShipConfig : ScriptableObject
     {
         [field: SerializeField]
         public GameObject shipPrefab;

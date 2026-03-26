@@ -3,29 +3,31 @@ using UnityEngine;
 
 namespace Game
 {
-    public abstract class BulletFactory : ScriptableObject , IFactory<Bullet>
+    public class BulletFactory : Factory<Bullet>
     {
-        [field: SerializeField]
-        public GameObject _bulletPrefab;
+        [SerializeField]
+        private TransformBounds _levelBounds;
         
-        [field: SerializeField]
-        public TeamType _team;
+        [SerializeField]
+        private BulletConfig _bulletConfig;
+        
+        [SerializeField]
+        private BulletManager _BulletManager;
+        
+        [SerializeField]
+        private GameObjectPull _gameObjectPull;
 
-        [SerializeField, Range(0, 31)] public int _layer;
-
-        [field: SerializeField] public int _damage;
-
-        [field: SerializeField] public float _speed;
-        
-        [field: SerializeField]
-        public GameObject ViewVFX { get; private set; }
-        
-        [field: SerializeField]
-        public GameObject ExplosionVFX  { get; private set; }
-        
-        [field: SerializeField]
-        public TransformBounds _transformBounds;
-        
-        public abstract Bullet Create();
+		[SerializeField]
+        private Transform _container;
+        public override Bullet Create()
+        {
+            var obj = Instantiate(_bulletConfig.BulletPrefab, _container);
+            
+            var bullet = obj.GetComponent<Bullet>();
+            
+            bullet.SetBounds(_levelBounds);
+            
+            return bullet;
+        }
     }
 }
