@@ -1,0 +1,23 @@
+{
+    "name": "Game.Views",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:e39b1cbd8bc143a7a3259afcbc76e4d2",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:9f02a643f26d64a33969340c6fc13f94",
+        "GUID:d430bedc2075480fbe691ed151691c6c",
+        "GUID:ef71634a59d64ef3ba27045ed53687e8",
+        "GUID:87df7d11a064465e9f5772fc6c82502f",
+        "GUID:5d402aca65474edd954349c76103c2d6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
