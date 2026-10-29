@@ -267,6 +267,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyView
+      value: 
+      objectReference: {fileID: 1065827894}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: -3
@@ -476,6 +492,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 4069365071620109237, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 160
@@ -506,39 +534,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1226517422905731925, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
   m_PrefabInstance: {fileID: 249258343}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &256898206 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 52783606}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
---- !u!114 &279397769 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 249258343}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
---- !u!114 &352316773 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 1918786892}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
 --- !u!114 &469370711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9209584536786063595, guid: c6f3aabda10ed1841ba1c1a8999ef4ba, type: 3}
@@ -698,6 +693,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: -3
@@ -816,17 +823,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &558587886 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 680929136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
 --- !u!1 &615309290
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,16 +925,7 @@ MonoBehaviour:
   - {fileID: 1614711787}
   - {fileID: 1000499693}
   - {fileID: 1731718601}
-  _incomeViews:
-  - {fileID: 1323894275}
-  - {fileID: 256898206}
-  - {fileID: 668873874}
-  - {fileID: 703970171}
-  - {fileID: 558587886}
-  - {fileID: 352316773}
-  - {fileID: 1083041361}
-  - {fileID: 1213543535}
-  - {fileID: 279397769}
+  _moneyRectTransform: {fileID: 0}
 --- !u!1 &641865332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,17 +1016,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &668873874 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 734240810}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
 --- !u!1001 &680929136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1188,6 +1164,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: 6
@@ -1214,17 +1202,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1226517422905731925, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
   m_PrefabInstance: {fileID: 680929136}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &703970171 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 470088492}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
 --- !u!1001 &734240810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1373,6 +1350,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: 4
@@ -1547,7 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _planetViews: []
-  _incomeViews: []
+  _moneyRectTransform: {fileID: 0}
 --- !u!1 &974007725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1740,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: -5
@@ -1806,28 +1807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.MoneyView
   _coinCount: {fileID: 1519357514}
---- !u!114 &1083041361 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 1247079640}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
---- !u!114 &1213543535 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 1000499686}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
+  _duration: 0.6
 --- !u!1001 &1247079640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,6 +1956,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: 3
@@ -2007,17 +1999,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6204055655084186918, guid: 922a3fcd633baa0498344270e9eabd2a, type: 3}
   m_PrefabInstance: {fileID: 6121086404576301247}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1323894275 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152343497378829351, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-  m_PrefabInstance: {fileID: 7566780103441064638}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af6035cabd81417d8cf25caf4332767e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.IncomeView
 --- !u!1 &1465214278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,6 +2430,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _id
+      value: Planet #6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     - target: {fileID: 5553639715843108117, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: speed
       value: -2
@@ -2889,10 +2882,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3157725880131624008, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 1308610924}
     - target: {fileID: 3221846615223955135, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2913,6 +2902,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyView
+      value: 
+      objectReference: {fileID: 1065827894}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _particleAnimator
+      value: 
+      objectReference: {fileID: 1465214280}
+    - target: {fileID: 4003342775045904167, guid: 368c7b958afaee34caa5e1b9338e5e65, type: 3}
+      propertyPath: _moneyRectTransform
+      value: 
+      objectReference: {fileID: 1308610924}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

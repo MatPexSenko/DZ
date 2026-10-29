@@ -11,7 +11,7 @@ namespace Game.Views
         private List<PlanetView> _planetViews;
         
         [SerializeField]
-        private List<IncomeView> _incomeViews;
+        private RectTransform _moneyRectTransform;
         public override void InstallBindings()
         {
             List<PlanetPresentation> presentations = Container.ResolveAll<PlanetPresentation>();
@@ -20,12 +20,8 @@ namespace Game.Views
             {
                 this.Container.BindInterfacesAndSelfTo<PlanetView>().FromInstance(VARIABLE).AsCached();
             }
-            
-            foreach (var VARIABLE in _incomeViews)
-                this.Container.BindInterfacesAndSelfTo<IncomeView>().FromInstance(VARIABLE).AsCached();
-
-            Container.BindInterfacesAndSelfTo<PlanetViewsInitializer>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<IncomeViewsInitializer>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<PlanetCollectionView>().AsSingle().NonLazy();
+            this.Container.BindInterfacesAndSelfTo<RectTransform>().FromInstance(_moneyRectTransform).AsSingle().NonLazy();
         }
     }
 }

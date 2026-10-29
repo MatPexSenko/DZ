@@ -14,14 +14,13 @@ namespace Game.Presenters
         {
             foreach (var Planet in Container.ResolveAll<IPlanet>())
             {
-                this.Container.BindInterfacesAndSelfTo<IncomePresentation>().AsCached().WithArguments(Planet);
                 this.Container.BindInterfacesAndSelfTo<PlanetPresentation>().AsCached().WithArguments(Planet);
             }
             
             this.Container.BindInterfacesAndSelfTo<PlanetPopupPresentation>().AsSingle();
             this.Container.BindInterfacesAndSelfTo<MoneyPresentation>().AsSingle().NonLazy();
-            Container.BindFactory<IPlanet, PlanetPresentation, PlanetPresentation.Factory>();
-            Container.BindFactory<IPlanet, IncomePresentation, IncomePresentation.Factory>();
+            
+            this.Container.BindInterfacesAndSelfTo<PlanetCollectionPresentation>().AsSingle().NonLazy();
         }
     }
 }

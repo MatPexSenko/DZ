@@ -28,6 +28,8 @@ namespace Game
         public Observable<Sprite> Icon => _icon;
         public Observable<bool> IsOpen => _isOpen;
         
+        public Observable<bool> IsMaxLevel => _isMaxLevel;
+        
         private readonly ReactiveProperty<string> _title = new("");
         private readonly ReactiveProperty<string> _population = new("");
         private readonly ReactiveProperty<string> _level = new("");
@@ -36,12 +38,15 @@ namespace Game
         private readonly ReactiveProperty<Sprite> _icon = new(null);
         
         private readonly ReactiveProperty<bool> _isOpen = new(false);
+
+        private readonly ReactiveProperty<bool> _isMaxLevel = new(false);
         
         private IPlanet _targetPlanet;
         
         public void Show(Args args)
         {
             _targetPlanet = args.planet;
+            UnSubscribe();
             UpdateState(_targetPlanet);
             Subscribe(_targetPlanet);
             _isOpen.Value = true;
@@ -66,11 +71,12 @@ namespace Game
         private void UpdateState(IPlanet planet)
         {
             _title.Value = planet.Name;
-            _population.Value = planet.Population.ToString();
+            _population.Value =$"Population: {planet.Population.ToString()}" ;
             SetLevelPlanet();
-            _income.Value = planet.MinuteIncome.ToString();
+            _income.Value = $"Income: {planet.MinuteIncome.ToString()}";
             _upgradeCost.Value = planet.Price.ToString();
             _icon.Value = planet.GetIcon(planet.IsUnlocked);
+            ReachMaxLevel(_targetPlanet.Level);
         }
 
         private void Subscribe(IPlanet planet)
@@ -79,6 +85,7 @@ namespace Game
             planet.OnUpgraded += SetLevelPlanet;
             planet.OnIncomeChanged += SetIncome;
             planet.OnUpgraded += SetUpgradeCost;
+            planet.OnUpgraded += ReachMaxLevel;
         }
         
         private void UnSubscribe()
@@ -89,7 +96,18 @@ namespace Game
                 _targetPlanet.OnUpgraded -= SetLevelPlanet;
                 _targetPlanet.OnIncomeChanged -= SetIncome;
                 _targetPlanet.OnUpgraded -= SetUpgradeCost;
+                _targetPlanet.OnUpgraded -= ReachMaxLevel;
             }
+        }
+
+        private void ReachMaxLevel(int level)
+        {
+            if (_targetPlanet.IsMaxLevel)
+            {
+                _isMaxLevel.Value = true;
+                return;
+            }
+            _isMaxLevel.Value = false;
         }
 
         private void SetUpgradeCost(int obj)
@@ -111,7 +129,7 @@ namespace Game
 
         private void SetPopulation(int obj)
         {
-            _population.Value = obj.ToString();
+            _population.Value = $"Population: {obj.ToString()}";
         }
     }
 }

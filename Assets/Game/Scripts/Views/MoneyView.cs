@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Globalization;
+using DG.Tweening;
 using R3;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -10,49 +11,55 @@ namespace Game.Views
 {
     public sealed class MoneyView : MonoBehaviour
     {
-        [SerializeField] 
-        private TMP_Text _coinCount;
+        [SerializeField] private TMP_Text _coinCount;
         
-        [ShowInInspector]private MoneyPresentation _presentation;
+        
+        [SerializeField] private float _duration = 0.6f;
+        [ShowInInspector] private MoneyPresentation _moneyPresentation;
         private readonly CompositeDisposable _disposables = new();
-        
-        private WaitForSeconds _waitForSeconds;
-        
+
+        private Tween _tween;
+        private int _displayed;
+
         [Inject]
         public void Construct(MoneyPresentation presentation)
         {
-            _presentation = presentation;
-            Debug.Log($"Money Presentation {_presentation}");
+            _moneyPresentation = presentation;
         }
+
         private void OnEnable()
         {
-            _presentation.Money
-                .Subscribe(x => SetCoinCount(x))
+            _moneyPresentation.Money
+                .Subscribe(SetMoneyCount)
                 .AddTo(_disposables);
-
-            _presentation.OnMoneyEarned += SetCoinCountWithDelay;
         }
 
         private void OnDisable()
         {
-            _disposables.Dispose();
-        }
-        public void SetCoinCount(string coinCount)
-        {
-            Debug.Log($"Money Presentation {_presentation}");
-            _coinCount.text = coinCount;
+            _disposables.Clear();
+            _tween?.Kill();
         }
 
-        public void SetCoinCountWithDelay(string coinCount)
+        public void SetMoneyCount(string coinCount)
         {
-            StartCoroutine(SetCoinCountRoutine(coinCount));
-        }
+            if (!int.TryParse(coinCount, out var target))
+            {
+                _tween?.Kill();
+                _coinCount.text = coinCount;
+                return;
+            }
 
-        private IEnumerator SetCoinCountRoutine(string coinCount)
-        {
-            yield return new WaitForSeconds(0.7f);
-
-            _coinCount.text = coinCount;
+            _tween?.Kill();
+            DOTween.To(
+                () => _displayed,
+                value =>
+                {
+                    _displayed = value;
+                    _coinCount.text = ((long)_displayed).ToString();
+                },
+                target,
+                _duration
+            );
         }
     }
 }

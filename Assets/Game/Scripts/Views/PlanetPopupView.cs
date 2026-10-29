@@ -44,36 +44,39 @@ namespace Game.Views
             _presentation = presentation;
             
             _presentation.IsOpen.Subscribe(x => Show(x));
+            _presentation.Title.Subscribe(x => _planetName.text = x).AddTo(_disposables);
+            _presentation.Level.Subscribe(x => _level.text = x).AddTo(_disposables);
+            _presentation.Population.Subscribe(x => _population.text = x).AddTo(_disposables);
+            _presentation.Income.Subscribe(x => _income.text = x).AddTo(_disposables);
+            _presentation.UpgradeCost.Subscribe(x => _upgradeCost.text = x).AddTo(_disposables);
+            _presentation.Icon.Subscribe(x => _planetImage.sprite = x).AddTo(_disposables);
+            _presentation.IsMaxLevel.Subscribe(x => SetUpgradeButtonColor(x)).AddTo(_disposables);
+            
+            _closeButton.onClick.AddListener(_presentation.OnClose);
+            _upgradeButton.onClick.AddListener(_presentation.OnUpgrade);
         }
 
         [Sirenix.OdinInspector.Button]
         public void Show(bool isOpen)
         {
-            if (isOpen)
-            {
-                _presentation.Title.Subscribe(x => _planetName.text = x).AddTo(_disposables);
-                _presentation.Level.Subscribe(x => _level.text = $"Level: {x}").AddTo(_disposables);
-                _presentation.Population.Subscribe(x => _population.text = $"Population: {x}").AddTo(_disposables);
-                _presentation.Income.Subscribe(x => _income.text = $"Income: {x}").AddTo(_disposables);
-                _presentation.UpgradeCost.Subscribe(x => _upgradeCost.text = x).AddTo(_disposables);
-                _presentation.Icon.Subscribe(x => _planetImage.sprite = x).AddTo(_disposables);
+            this.gameObject.SetActive(isOpen);
+        }
 
-                _closeButton.onClick.AddListener(_presentation.OnClose);
-                _upgradeButton.onClick.AddListener(_presentation.OnUpgrade);
-            
-                this.gameObject.SetActive(true);
+        private void SetUpgradeButtonColor(bool isMax)
+        {
+            if (isMax)
+            {
+                _upgradeButton.GetComponent<Image>().color = Color.darkGray;
                 return;
             }
-            Hide();
+            _upgradeButton.GetComponent<Image>().color = new Color32(75,154,176, 255);
+            
         }
-        
-        private void Hide()
-        { 
-            _disposables.Clear();
+        private void OnDestroy()
+        {
+            _disposables.Dispose();
             _closeButton.onClick.RemoveListener(_presentation.OnClose);
             _upgradeButton.onClick.RemoveListener(_presentation.OnUpgrade);
-            
-            this.gameObject.SetActive(false);
         }
     }
 }

@@ -10,16 +10,25 @@ namespace Game.Presenters
 {
     public class PlanetPresentation : IDisposable
     {
-        public event Action OnIncomeGather;
+        public string planetId => _planet.Name;
+        public Observable<Unit> OnStartIncomeGather => _onStartIncomeGather;
         public Observable<string> Price => _price;
         public Observable<Sprite> Icon => _icon;
         public Observable<bool> IsUnlocked => _isUnlocked;
-        public Observable<bool> IsIncomeReady => _isIncomeReady;
         
+        public ReadOnlyReactiveProperty<float> Persent => _currentPersent;
+        public ReadOnlyReactiveProperty<string> CurrentTime => _currentTime;
+        public ReadOnlyReactiveProperty<bool> isUnlock => _isUnlock;
+        public ReadOnlyReactiveProperty<bool> IsIncomeReady => _isIncomeReady;
+        
+        private readonly ReactiveProperty<Unit> _onStartIncomeGather = new ReactiveProperty<Unit>();
         private readonly ReactiveProperty<string> _price = new("");
         private readonly ReactiveProperty<Sprite> _icon = new(null);
         private readonly ReactiveProperty<bool> _isUnlocked = new(false);
         
+        private readonly ReactiveProperty<float> _currentPersent = new(0f);
+        private readonly ReactiveProperty<string> _currentTime = new("");
+        private readonly ReactiveProperty<bool> _isUnlock = new(false);
         private readonly ReactiveProperty<bool> _isIncomeReady = new(false);
         
         [ShowInInspector]
@@ -34,20 +43,26 @@ namespace Game.Presenters
             
             _planet.OnUnlocked += UnlockPlanet;
             _planet.OnIncomeReady += IncomeReady;
-            _planet.OnGathered += IncomeGathered;
+            
+            _planet.OnUnlocked += Unlock;
+            _planet.OnIncomeTimeChanged += ChangeCurrentPercent;
+            _planet.OnIncomeReady += IncomeReady;
             
             UpdateState();
         }
 
-        private void IncomeGathered(int obj)
+        private void StartIncomeGather()
         {
-            OnIncomeGather?.Invoke();
+            _onStartIncomeGather.OnNext(Unit.Default);
         }
         public void Dispose()
         {
             _planet.OnIncomeReady -= IncomeReady;
             _planet.OnUnlocked -= UnlockPlanet;
-            _planet.OnGathered -= IncomeGathered;
+            
+            _planet.OnUnlocked -= Unlock;
+            _planet.OnIncomeTimeChanged -= ChangeCurrentPercent;
+            _planet.OnIncomeReady -= IncomeReady;
         }
 
         void UpdateState()
@@ -78,9 +93,14 @@ namespace Game.Presenters
 
             if (_planet.IsIncomeReady)
             {
-                _planet.GatherIncome();
+                this.StartIncomeGather();
                 return;
             }
+        }
+
+        public void GatherIncome()
+        {
+            _planet.GatherIncome();
         }
 
         public void OnLongClicked()
@@ -88,8 +108,27 @@ namespace Game.Presenters
             planetPopup.Show(new PlanetPopupPresentation.Args(this._planet));
         }
         
-        public class Factory : PlaceholderFactory<IPlanet, PlanetPresentation>
+        
+        public void Unlock()
         {
+            _isUnlock.Value = true;
+        }
+        
+        private string FormatTime(float seconds)
+        {
+            float minutes = seconds / 60;
+            float secs = seconds % 60;
+            secs = (int)secs;
+            
+            string strSec = secs>=10 ? secs.ToString() : $"0{secs}";
+
+            return $"{(int)minutes}: " + $"{strSec}";
+        }
+        private void ChangeCurrentPercent(float time)
+        {
+            _currentPersent.Value = _planet.IncomeProgress;
+            _currentTime.Value = FormatTime(time);
+            
         }
     }
 }
